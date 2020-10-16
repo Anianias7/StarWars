@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client';
 import { gql } from '@apollo/client';
 import { Planets } from '../../generated/Planets';
 import { CustomFilm } from '../../utils/types';
+import { v4 as uuidv4 } from 'uuid';
 
 const PLANETS_QUERY = gql`
   query Planets {
@@ -117,7 +118,8 @@ const AddFilmForm: FC<Props> = ({ setCustomMovie }) => {
     ) {
       const result: CustomFilm = {
         film: {
-          id: Math.random(),
+          id: parseInt(uuidv4()),
+          episodeID: parseInt(uuidv4()),
           title: values['filmTitle'],
           plannetConnection: {
             planets: values['planets'],
