@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.2",
+    "@babel/preset-typescript": "^7.12.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -13,8 +14,8 @@
     "@types/react": "^16.9.51",
     "@types/react-dom": "^16.9.8",
     "@types/react-select": "^3.0.22",
+    "@types/uuid": "^8.3.0",
     "apollo": "^2.31.0",
-    "apollo-boost": "^0.4.9",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "react": "^16.13.1",
@@ -24,7 +25,8 @@
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
     "styled-components": "^5.2.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "uuid": "^8.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "codegen": "graphql-codegen --config codegen.yml",
-    "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=**/*.tsx --endpoint http://localhost:58834 --tagName gql --outputFlat src/generated --passthroughCustomScalars --customScalarsPrefix StarWars",
+    "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=**/*.tsx --endpoint http://localhost:9000 --tagName gql --outputFlat src/generated --passthroughCustomScalars --customScalarsPrefix StarWars",
     "schema": "apollo client:download-schema --endpoint http://localhost:58834 src/schema.json"
   },
   "eslintConfig": {
