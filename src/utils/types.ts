@@ -1,6 +1,7 @@
 export type CustomFilm = {
   film: {
     id: number;
+    episodeID: number;
     title: string;
     plannetConnection: {
       planets: [
