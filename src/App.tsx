@@ -1,13 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { useQuery } from "@apollo/client";
-import Main from "./components/Main/Main";
+import React from 'react';
+import './App.css';
+import FilmsScreen from './components/FilmsScreen/FilmsScreen';
 
 const App = () => {
   return (
     <div className="App">
-      <Main />
+      <FilmsScreen />
     </div>
   );
 };
