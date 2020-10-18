@@ -39,6 +39,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## For backend
 
-Go to swapi-graph folder and run `npm run start`
-It is must do step to run backend which is needed for frontend to work.
+Go to swapi-graph folder and run `npm install`
+It is must do step for frontend to work.
 Backend is set to run on 9000 port.

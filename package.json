@@ -17,7 +17,8 @@
     "uuid": "^8.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "server": "cd swapi-graphql && npm start",
+    "start": "concurrently \"npm run server\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
