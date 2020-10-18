@@ -36,13 +36,13 @@ interface InitialValues {
   planets: [];
 }
 
+const initialValues: InitialValues = {
+  filmTitle: '',
+  planets: [],
+};
+
 const AddFilmForm: FC<Props> = ({ setCustomMovie }) => {
   const { loading, data } = useQuery<Planets>(PLANETS_QUERY);
-
-  const initialValues: InitialValues = {
-    filmTitle: '',
-    planets: [],
-  };
 
   const [values, setValues] = useState<{ [key: string]: any }>(initialValues);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -110,32 +110,31 @@ const AddFilmForm: FC<Props> = ({ setCustomMovie }) => {
     );
     setErrors(formValidation.errors);
     setTouched(formValidation.touched);
-
-    if (
-      !Object.values(formValidation.errors).length &&
-      Object.values(formValidation.touched).length === Object.values(values).length &&
-      Object.values(formValidation.touched).every(t => t === true)
-    ) {
-      const result: CustomFilm = {
-        film: {
-          id: parseInt(uuidv4()),
-          episodeID: parseInt(uuidv4()),
-          title: values['filmTitle'],
-          plannetConnection: {
-            planets: values['planets'],
-          },
-        },
-      };
-      setCustomMovie(result);
-      setValues(initialValues);
-      setErrors({});
-      setTouched({});
+    if (Object.values(formValidation.errors).length) {
+      return;
     }
+    const result: CustomFilm = {
+      film: {
+        id: parseInt(uuidv4()),
+        episodeID: parseInt(uuidv4()),
+        title: values.filmTitle,
+        plannetConnection: {
+          planets: values.planets,
+        },
+      },
+    };
+    setCustomMovie(result);
+    setValues(initialValues);
+    setErrors({});
+    setTouched({});
   };
+
+  const disabledSubmit = Boolean(touched && Object.values(errors).length);
 
   return (
     <Form onSubmit={handleSubmit}>
       <Input
+        id="movieTitle"
         placeholder="Please enter the tittle of the movie"
         label="Movie tittle"
         value={values['filmTitle']}
@@ -155,7 +154,7 @@ const AddFilmForm: FC<Props> = ({ setCustomMovie }) => {
         />
       </SelectWrapper>
       <ButtonWrapper>
-        <Button disabled={!!(touched && Object.values(errors).length)} text="ADD MOVIE" type="submit" />
+        <Button disabled={disabledSubmit} text="ADD MOVIE" type="submit" />
       </ButtonWrapper>
     </Form>
   );

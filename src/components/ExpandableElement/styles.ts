@@ -35,4 +35,9 @@ export const Text = styled.span`
   color: #00687f;
 `;
 
+export const ChildrenWrapper = styled.div`
+  top: -3px;
+  position: 'relative';
+`;
+
 export const Icon = styled.img``;

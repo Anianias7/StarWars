@@ -33,14 +33,14 @@ const PlanetSelect: FC<Props> = ({ label, placeholder, planets, onChange, select
 
   const handleOnChange = (selectedOption: any) => {
     if (selectedOption) {
-      setOptions(options.filter(o => o?.id !== selectedOption.value?.id));
+      setOptions(prevOptions => prevOptions.filter(o => o?.id !== selectedOption.value?.id));
       onChange([...selectedPlanets, selectedOption.value]);
     }
   };
 
   const handleRemoveSelectedPlanet = (selectedPlanet: Planets_allPlanets_planets | null) => () => {
     if (selectedPlanet) {
-      setOptions([...options, selectedPlanet]);
+      setOptions(prevOptions => [...prevOptions, selectedPlanet]);
       onChange(selectedPlanets.filter(o => o?.id !== selectedPlanet.id));
     }
   };
